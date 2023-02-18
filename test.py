@@ -14,7 +14,7 @@ class TestWebsite:
 
     @pytest.fixture(autouse=True)
     def browser_setup_and_teardown(self):
-        self.use_selenoid = False  # set to True to run tests with Selenoid
+        self.use_selenoid = False  # set to True to run test with Selenoid
 
         if self.use_selenoid:
             self.browser = webdriver.Remote(
