@@ -14,7 +14,7 @@ class TestWebsite:
 
     @pytest.fixture(autouse=True)
     def browser_setup_and_teardown(self):
-        self.use_selenoid = False  # set to True to run test with Selenoid
+        self.use_selenoid = False  # set to True to run tests with Selenoid
 
         if self.use_selenoid:
             self.browser = webdriver.Remote(
@@ -38,7 +38,7 @@ class TestWebsite:
         self.browser.quit()
 
     def test_tools_menu(self):
-        """this test checks presence of Tools menu item"""
+        """this tests checks presence of Tools menu item"""
         tools_menu = self.browser.find_element_by_xpath(
             "//div[contains(@class, 'menu-main__item') and text() = 'Tools']")
 
@@ -50,7 +50,7 @@ class TestWebsite:
         assert menu_popup is not None
 
     def test_navigation_to_all_tools(self):
-        """this test checks navigation by See All Tools button"""
+        """this tests checks navigation by See All Tools button"""
         see_all_tools_button = self.browser.find_element_by_css_selector("a.wt-button_mode_primary")
         see_all_tools_button.click()
 
@@ -59,8 +59,8 @@ class TestWebsite:
         assert self.browser.title == "All Developer Tools and Products by JetBrains"
 
     def test_search(self):
-        """this test checks search from the main menu"""
-        search_button = self.browser.find_element_by_css_selector("[data-test=menu-main-icon-search]")
+        """this tests checks search from the main menu"""
+        search_button = self.browser.find_element_by_css_selector("[data-tests=menu-main-icon-search]")
         search_button.click()
 
         search_field = self.browser.find_element_by_id("header-search")
