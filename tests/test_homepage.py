@@ -21,4 +21,4 @@ class TestHomePage(DriverFactory):
         home_page.click_submit_button()
         logger.info(home_page.alert_text)
 
-        assert "Success" in home_page.alert_text
+        assert "Succesdss" in home_page.alert_text
