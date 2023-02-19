@@ -1,4 +1,4 @@
-# Practice-PyhonSelenium
+# Practice-PythonSelenium
 
 [https://www.udemy.com/course/selenium-webdriver-python/](https://www.udemy.com/course/selenium-webdriver-python/)
 
