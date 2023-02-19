@@ -1,6 +1,4 @@
 from selenium.webdriver import Chrome
-from selenium.webdriver.common.by import By
-
 from src.pages.checkout_page import CheckOutPage
 from src.pages.home_page import HomePage
 from utilities.base import DriverFactory
@@ -9,7 +7,7 @@ from utilities.base import DriverFactory
 class TestOne(DriverFactory):
     driver: Chrome
 
-    def test_e2e(self):
+    def test_checkout_link_text(self):
         home_page = HomePage(self.driver)
         checkout_page = home_page.move_shop_checkout_page()
         cards = checkout_page.card_title
@@ -25,6 +23,8 @@ class TestOne(DriverFactory):
         confirm_page = checkout_page.move_confirm_page()
         confirm_page.input_country("ind")
         link_item = self.verify_link_presence("India")
+        print(link_item.text)
+        assert "India" == link_item.text
 
 
 
