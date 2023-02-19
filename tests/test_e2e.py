@@ -8,12 +8,13 @@ class TestOne(DriverFactory):
     driver: Chrome
 
     def test_checkout_link_text(self):
+        logger = self.getlogger()
         home_page = HomePage(self.driver)
         checkout_page = home_page.move_shop_checkout_page()
         cards = checkout_page.card_title
 
         for i in range(len(cards)):
-            print(cards[i].text)
+            logger.info(cards[i].text)
 
             if cards[i].text == "Blackberry":
                 checkout_page.card_footer[i].click()
@@ -23,8 +24,6 @@ class TestOne(DriverFactory):
         confirm_page = checkout_page.move_confirm_page()
         confirm_page.input_country("ind")
         link_item = self.verify_link_presence("India")
-        print(link_item.text)
+        logger.info(link_item.text)
+
         assert "India" == link_item.text
-
-
-
