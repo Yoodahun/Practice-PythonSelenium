@@ -4,11 +4,14 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 
+from tests.test_data.homepage_data import HomePageData
+
 
 def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome"
     )
+
 
 @fixture(autouse=True)
 def setup_and_teardown(request) -> webdriver.Chrome:
@@ -29,3 +32,7 @@ def setup_and_teardown(request) -> webdriver.Chrome:
     request.cls.driver.close()
     request.cls.driver.quit()
 
+
+@fixture(params=HomePageData.TEST_HOME_PAGE_DATA)
+def get_homepage_data(request):
+    return request.param
