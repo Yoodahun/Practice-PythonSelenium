@@ -29,7 +29,7 @@ class DriverFactory:
 
         logger_name = inspect.stack()[1][3]
         logger = logging.getLogger(logger_name)
-        fileHandler = logging.FileHandler('logging.log')
+        fileHandler = logging.FileHandler('logs/logging.log')
         formatter = logging.Formatter("%(asctime)s : %(levelname)s : %(name)s : %(message)s")
         fileHandler.setFormatter(formatter)
         logger.addHandler(fileHandler)
