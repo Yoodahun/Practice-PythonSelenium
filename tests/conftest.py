@@ -1,5 +1,6 @@
 from pytest import fixture
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 
@@ -14,9 +15,9 @@ def setup_and_teardown(request) -> webdriver.Chrome:
     browser_name = request.config.getoption("browser_name")
     print(browser_name)
 
-    if browser_name is "chrome":
+    if browser_name == "chrome":
         request.cls.driver = webdriver.Chrome(
-            executable_path=ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+            service=Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
         )
 
         request.cls.driver.maximize_window()
