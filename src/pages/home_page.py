@@ -1,7 +1,6 @@
 from selenium.webdriver import Chrome
-
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
+from src.pages.checkout_page import CheckOutPage
 
 
 class HomePage:
@@ -10,5 +9,6 @@ class HomePage:
     def __init__(self, driver):
         self.driver: Chrome = driver
 
-    def shop_item(self) -> WebElement:
-        return self.driver.find_element(*HomePage.shop)
+    def move_shop_checkout_page(self) -> CheckOutPage:
+        self.driver.find_element(*HomePage.shop).click()
+        return CheckOutPage(self.driver)
