@@ -30,6 +30,11 @@ class HomePage:
 
     @property
     def gender(self) -> WebElement:
+        """
+        gender 를 리턴하며 select option이다.
+
+        :return: WebElement
+        """
         return self.driver.find_element(*HomePage.__gender)
 
     def move_shop_checkout_page(self) -> CheckOutPage:
