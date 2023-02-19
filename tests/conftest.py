@@ -12,6 +12,7 @@ def pytest_addoption(parser):
 @fixture(autouse=True)
 def setup_and_teardown(request) -> webdriver.Chrome:
     browser_name = request.config.getoption("browser_name")
+    print(browser_name)
 
     if browser_name is "chrome":
         request.cls.driver = webdriver.Chrome(
