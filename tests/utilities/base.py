@@ -1,3 +1,6 @@
+import inspect
+import logging
+
 from pytest import fixture, mark
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
@@ -22,3 +25,14 @@ class DriverFactory:
         option = Select(select_tag)
         option.select_by_visible_text(text)
 
+    def getlogger(self):
+
+        logger_name = inspect.stack()[1][3]
+        logger = logging.getLogger(logger_name)
+        fileHandler = logging.FileHandler('logging.log')
+        formatter = logging.Formatter("%(asctime)s : %(levelname)s : %(name)s : %(message)s")
+        fileHandler.setFormatter(formatter)
+        logger.addHandler(fileHandler)
+        logger.setLevel(logging.INFO)
+
+        return logger
